@@ -238,3 +238,4 @@ endfunc
 autocmd BufWrite * :call DeleteTrailingWS()
 " pep8设置
 let g:flake8_ignore="N4,E12,E711,E712,E721,E502"
+let g:pydiction_location = '/usr/share/vim/vimcurrent/plugin/complete-dict'
