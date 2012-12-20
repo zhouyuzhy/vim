@@ -45,7 +45,7 @@ nnoremap tp  :tabprev<CR>
 nnoremap tl  :tablast<CR>
 nnoremap te  :tabedit<Space>
 nnoremap tn  :tabnext<CR>
-nnoremap td  :tabclose<CR>
+nnoremap tc  :tabclose<CR>
 "C，C++ 按F5编译运行
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -226,7 +226,6 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 filetype plugin on
-autocmd FileType python　set omnifunc=pythoncomplete#Complete
 set list
 set lcs=tab:>-,trail:-
 " 保存时自动删除行尾空格
@@ -238,4 +237,12 @@ endfunc
 autocmd BufWrite * :call DeleteTrailingWS()
 " pep8设置
 let g:flake8_ignore="N4,E12,E711,E712,E721,E502"
-let g:pydiction_location = '/usr/share/vim/vimcurrent/plugin/complete-dict'
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+ if has("autocmd")
+   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+let g:jedi#popup_on_dot = 0
+let g:jedi#rename_command = "<leader>r"
